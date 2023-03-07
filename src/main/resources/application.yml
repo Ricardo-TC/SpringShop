@@ -1,1 +1,17 @@
-
+spring:
+ application:
+  name: todo-app
+ datasource:
+  driver-class-name: "com.mysql.cj.jdbc.Driver"
+  url: "jdbc:mysql://localhost:3306/onlineshop"
+  username: root
+  password: I~992kqo
+ h2:
+  console:
+   enabled: true
+   path: /h2-console
+ jpa: 
+  show-sql: true
+  defer-datasource-initialization: true
+  hibernate:
+  ddl-auto: none

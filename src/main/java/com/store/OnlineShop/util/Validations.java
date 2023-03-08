@@ -18,6 +18,8 @@ public class Validations {
 		return true;
 	}
 	
+	//agregar una validacion para tama;o de disctype y discamount
+	
 	public boolean validateNumber(Integer number) {
 		String chain = String.valueOf(number);
 		if(number==0 || chain.isBlank())return false;

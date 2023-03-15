@@ -49,10 +49,6 @@ public class Validations {
 		if(!validateString(product.getName()))throw new ShopExceptions("Invalid name",HttpStatus.NOT_ACCEPTABLE);
 		if(!validateFloat(product.getCost()))throw new ShopExceptions("Invalid cost",HttpStatus.NOT_ACCEPTABLE);
 		if(!validateFloat(product.getPrice()))throw new ShopExceptions("Invalid price",HttpStatus.NOT_ACCEPTABLE);
-		if(!product.getDiscount_type().isEmpty())
-			if(!validateString(product.getDiscount_type()))throw new ShopExceptions("Invalid discount type",HttpStatus.NOT_ACCEPTABLE);
-		if(!product.getDiscount_amount().isEmpty())
-			if(!validateString(product.getDiscount_amount()))throw new ShopExceptions("Invalid discount amount",HttpStatus.NOT_ACCEPTABLE);
 		if(!product.getDescription().isEmpty())
 			if(!validateString(product.getDescription()))throw new ShopExceptions("Invalid description",HttpStatus.NOT_ACCEPTABLE);
 		if(!validateNumber(product.getDep_id()))throw new ShopExceptions("Invalid deparment id",HttpStatus.NOT_ACCEPTABLE);

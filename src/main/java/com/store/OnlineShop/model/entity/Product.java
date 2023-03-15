@@ -20,10 +20,6 @@ public class Product {
 	private float cost;
 	@Column(name = "price")
 	private float price;
-	@Column(name = "discount_type", nullable = true)
-	private String discount_type;
-	@Column(name = "discount_amount", nullable = true)
-	private String discount_amount;
 	@Column(name = "description")
 	private String description;
 	@Column(name = "dep_id")
@@ -52,18 +48,6 @@ public class Product {
 	public void setPrice(float price) {
 		this.price = price;
 	}
-	public String getDiscount_type() {
-		return discount_type;
-	}
-	public void setDiscount_type(String discount_type) {
-		this.discount_type = discount_type;
-	}
-	public String getDiscount_amount() {
-		return discount_amount;
-	}
-	public void setDiscount_amount(String discount_amount) {
-		this.discount_amount = discount_amount;
-	}
 	public String getDescription() {
 		return description;
 	}
@@ -76,5 +60,4 @@ public class Product {
 	public void setDep_id(int dep_id) {
 		this.dep_id = dep_id;
 	}
-
 }

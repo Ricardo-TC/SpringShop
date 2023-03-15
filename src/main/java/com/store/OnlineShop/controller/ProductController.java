@@ -10,12 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.store.OnlineShop.model.entity.Product;
 import com.store.OnlineShop.service.ProductService;
-import com.store.OnlineShop.service.dto.ProductDiscountInDTO;
 import com.store.OnlineShop.service.dto.ProductInDTO;
 
 @CrossOrigin(origins = "http://localhost:8080")
@@ -48,16 +46,6 @@ public class ProductController {
 	@PatchMapping("/{id}")
 	public void updateProduct(@PathVariable("id") int id,@RequestBody ProductInDTO productInDTO) {
 		this.service.updateProduct(id, productInDTO);
-	}
-	
-	@PatchMapping("/UpdateDiscount/{id}")
-	public void updateProductDiscount(@PathVariable("id") int id,@RequestBody ProductDiscountInDTO productDiscountInDTO) {
-		this.service.updateProductDiscount(id, productDiscountInDTO);
-	}
-	
-	@PatchMapping("/UpdDisc")
-	public void updateDiscount(@RequestParam int id,@RequestParam String disType,@RequestParam String disAmount) {
-		this.service.updateDiscount(id, disType, disAmount);
 	}
 	
 	@DeleteMapping("/{id}")

@@ -8,11 +8,8 @@ public class ProductInDTO {
 	private String name;
 	private float cost;
 	private float price;
-	private String discount_type;
-	private String discount_amount;
 	private String description;
 	private int dep_id;
-
 	public String getName() {
 		return name;
 	}
@@ -30,18 +27,6 @@ public class ProductInDTO {
 	}
 	public void setPrice(float price) {
 		this.price = price;
-	}
-	public String getDiscount_type() {
-		return discount_type;
-	}
-	public void setDiscount_type(String discount_type) {
-		this.discount_type = discount_type;
-	}
-	public String getDiscount_amount() {
-		return discount_amount;
-	}
-	public void setDiscount_amount(String discount_amount) {
-		this.discount_amount = discount_amount;
 	}
 	public String getDescription() {
 		return description;

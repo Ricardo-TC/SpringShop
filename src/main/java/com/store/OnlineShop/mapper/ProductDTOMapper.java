@@ -14,8 +14,6 @@ public class ProductDTOMapper implements IMapper<ProductInDTO,Product>{
 		product.setName(in.getName());
 		product.setCost(in.getCost());
 		product.setPrice(in.getPrice());
-		product.setDiscount_type(in.getDiscount_type());
-		product.setDiscount_amount(in.getDiscount_amount());
 		product.setDescription(in.getDescription());
 		product.setDep_id(in.getDep_id());
 		return product;

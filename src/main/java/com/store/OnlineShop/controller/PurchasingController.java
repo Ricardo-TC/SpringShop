@@ -1,6 +1,5 @@
 package com.store.OnlineShop.controller;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.web.bind.annotation.*;
 
 import com.store.OnlineShop.model.entity.Cart;

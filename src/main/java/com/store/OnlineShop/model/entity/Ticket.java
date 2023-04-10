@@ -1,6 +1,6 @@
 package com.store.OnlineShop.model.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -20,7 +20,7 @@ public class Ticket {
 	@Column(name = "total")
 	private float total;
 	@Column(name = "date")
-	private Date date;
+	private LocalDate date;
 	public int getTicket_id() {
 		return ticket_id;
 	}
@@ -33,10 +33,10 @@ public class Ticket {
 	public void setTotal(float total) {
 		this.total = total;
 	}
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 

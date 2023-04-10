@@ -42,25 +42,27 @@ public class DiscountService {
 	
 	public Discount findById(int disc_id) {
 		Optional<Discount> opt = this.repository.findById(disc_id);
-		if(opt.isEmpty())throw new ShopExceptions("Not found",HttpStatus.NOT_FOUND);
+		if(opt.isEmpty())throw new ShopExceptions("Data not found",HttpStatus.NOT_FOUND);
 		return opt.get();
 	}
 	
 	public List<Discount> getDiscountByProduct(int prod_id){
 		List<Discount> discountList = this.repository.getDiscountByProduct(prod_id);
 		
-		if(discountList.isEmpty())throw new ShopExceptions("Data not found",HttpStatus.NO_CONTENT);
+		if(discountList.isEmpty())throw new ShopExceptions("Data not found",HttpStatus.NOT_FOUND);
 		return discountList;
 	}
 	
 	public Discount getActiveDiscount(int prod_id) {
+		Discount discount = this.repository.getActiveDiscount(prod_id, LocalDate.now());
+		if(discount == null)throw new ShopExceptions("Data not found",HttpStatus.NOT_FOUND);
 		return this.repository.getActiveDiscount(prod_id, LocalDate.now());
 	}
 	
 	@Transactional
 	public void updateDiscount(int disc_id, DiscountInDTO discountInDTO) {
 		validations.validateDiscount(discountInDTO);
-		if(this.repository.findById(disc_id).isEmpty())throw new ShopExceptions("Not Found",HttpStatus.NOT_FOUND);
+		if(this.repository.findById(disc_id).isEmpty())throw new ShopExceptions("Data not Found",HttpStatus.NOT_FOUND);
 		this.repository.updateDiscount(disc_id, discountInDTO.getProd_id(), discountInDTO.getDiscount_type(), discountInDTO.getDiscount_amount(), 
 				discountInDTO.getDate_begin(), discountInDTO.getDate_expire());
 	}

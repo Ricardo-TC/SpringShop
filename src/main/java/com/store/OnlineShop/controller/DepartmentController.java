@@ -2,6 +2,8 @@ package com.store.OnlineShop.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,11 +19,13 @@ import com.store.OnlineShop.service.DepartmentService;
 import com.store.OnlineShop.service.dto.DepartmentInDTO;
 
 @RestController
+@Controller
 @RequestMapping("/Department")
 @CrossOrigin(origins = "http://localhost:8080")
 public class DepartmentController {
 	private final DepartmentService service;
 
+	//@Autowired
 	public DepartmentController(DepartmentService service) {
 		super();
 		this.service = service;

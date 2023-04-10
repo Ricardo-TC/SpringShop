@@ -14,4 +14,6 @@ public interface ProductRepository extends JpaRepository<Product,Integer>{
 	public void updateProduct(@Param("id") int id,@Param("nname") String nname,@Param("ncost") float ncost,@Param("nprice") float nprice,
 			@Param("ndescription") String ndescription,@Param("ndep_id") int ndep_id);
 
+	@Query(value = "SELECT * FROM product where name=:name",nativeQuery = true)
+	public Product testGetProduct(@Param("name") String name);
 }

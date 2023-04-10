@@ -30,7 +30,7 @@ public class PurchasingService {
 	private final DiscountRepository discountRepository;
 	private final Validations validations = new Validations();
 	
-	private int lastTicket;
+	private int ticket;
 	
 	
 	public PurchasingService(CartDTOMapper cartMapper, CartRepository cartRepository,
@@ -44,33 +44,51 @@ public class PurchasingService {
 	}
 	
 	public int newTicket() {
-		lastTicket = this.ticketRepository.newTicket();
-		return lastTicket;
+		ticket = this.ticketRepository.newTicket();
+		return ticket;
 	}
 	
 	public Cart addToCart(int prod_id,int quantity) {
-		if(lastTicket==0)throw new ShopExceptions("Please generate new ticket",HttpStatus.BAD_REQUEST);
+		if(ticket==0)throw new ShopExceptions("Please generate new ticket",HttpStatus.BAD_REQUEST);
 		if(!validations.validateNumber(prod_id))throw new ShopExceptions("Product is required",HttpStatus.NO_CONTENT);
 		if(!validations.validateNumber(quantity))throw new ShopExceptions("Quantity is required",HttpStatus.NO_CONTENT);
 		
 		float subtotal = getSubtotal(prod_id,quantity);
 		
-		CartInDTO cartInDTO = new CartInDTO(lastTicket,prod_id,quantity,subtotal);
+		CartInDTO cartInDTO = new CartInDTO(ticket,prod_id,quantity,subtotal);
 		Cart cart = cartMapper.map(cartInDTO);
 		return this.cartRepository.save(cart);
 	}
 	
 	@Transactional
-	public float totalPurchase() {
-		if(!validations.validateNumber(lastTicket))throw new ShopExceptions("It is required a new ticket",HttpStatus.BAD_REQUEST);
-		return this.ticketRepository.totalPurchase(lastTicket);
+	public List<Cart> totalPurchase() {
+		if(!validations.validateNumber(ticket))throw new ShopExceptions("It is required a new ticket",HttpStatus.BAD_REQUEST);
+		int tempTicket = ticket;
+		Cart cart;
+		ticket = 0;
+		float total = this.ticketRepository.totalPurchase(tempTicket);
+		return this.cartRepository.getCartByTicket(tempTicket);
+
 	}
+	
+	public float onlyTotalPurchase() {
+		if(!validations.validateNumber(ticket))throw new ShopExceptions("It is required a new ticket",HttpStatus.BAD_REQUEST);
+		return this.ticketRepository.onlyTotalPurchase(ticket);
+	}
+	
+	
+	
+	
 	
 	private float getSubtotal(int prod_id,int quantity) {
         Product product = this.productRepository.getById(prod_id);
         Discount discount = this.discountRepository.getActiveDiscount(prod_id, LocalDate.now());
-        String discType = discount.getDiscount_type();
-        String discAmount = discount.getDiscount_amount();
+        String discType = "";
+        String discAmount = "";
+        if(discount != null) {
+        	discType = discount.getDiscount_type();
+        	discAmount = discount.getDiscount_amount();
+        }
         
         float productPrice = product.getPrice();
         float subtotal=0;
@@ -94,5 +112,9 @@ public class PurchasingService {
         }
 		return subtotal;
 	}		
+	
+	private void printTicket() {
+		
+	}
 	
 }

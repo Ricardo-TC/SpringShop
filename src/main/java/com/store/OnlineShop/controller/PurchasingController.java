@@ -1,5 +1,7 @@
 package com.store.OnlineShop.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.*;
 
 import com.store.OnlineShop.model.entity.Cart;
@@ -28,9 +30,14 @@ public class PurchasingController {
 		return this.purchasingService.addToCart(prod_id,quantity);
 	}
 	
-	@PatchMapping("/TotalPurchase")
-	public float totalPurchase() {
+	@PatchMapping("/FinishPurchasePrintTicket")
+	public List<Cart> finishPurchasePrintTicket() {
 		return this.purchasingService.totalPurchase();
+	}
+	
+	@GetMapping("/GetTotal")
+	public float onlyTotalPurchase() {
+		return this.purchasingService.onlyTotalPurchase();
 	}
 
 }

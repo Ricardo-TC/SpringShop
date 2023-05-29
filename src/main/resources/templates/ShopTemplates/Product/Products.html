@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Products.css">
+    <title>Get Products</title>
+</head>
+<body>
+	<script src="Products.js"></script>
+	<main>
+		<div class="products col-lg-12">
+			<div class="showproducts col-lg-7">
+				<h1>***** Available products on store *****</h1>
+				<div class="one-product">
+					<label class="searchlabel" for="searchinput">Enter product ID</label>
+					<input id="searchinput" class="searchinput" type="number" placeholder="5" class="find-one-product" max="999" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" autofocus>
+					<button id="searchbutton" class="searchbutton">Search</button>
+					<script>
+						var input = document.getElementById("searchinput");
+						input.addEventListener("keypress", function(event){
+						if(event.key === "Enter"){
+							event.preventDefault();
+							document.getElementById("searchbutton").click();
+						}
+						});
+					</script>
+				</div>
+				<div class="allproducts">
+					<button id="getall" class="getall" >Get All Products</button>	
+					<button id="refresh" class="refresh" onclick="location.reload()">Refresh</button>				
+					<div>
+						<table width="1000px">
+							<col style="width: 3%">
+							<col style="width: 20%">
+							<col style="width: 8%">
+							<col style="width: 8%">
+							<col style="width: 35%">
+							<col style="width: 10%">
+							<col style="width: 16%">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Name</th>
+									<th>Cost</th>
+									<th>Price</th>
+									<th>Description</th>
+									<th>Department</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody id="producttable"></tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="createproduct col-lg-5">
+				<h1>***** Create new Product *****</h1>
+				<div>
+					<form id="myform">
+						<label>Name</label><br>
+						<input type="text" name="name" placeholder="Name" required><br>
+						<label>Cost</label><br>
+						<input type="text" name="cost" placeholder="Cost" required onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;"><br>
+						<label>Price</label><br>
+						<input type="text" name="price" placeholder="Price" required onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;"><br>
+						<label>Description</label><br>
+						<input type="text" name="description" placeholder="Short description" value="Some data"><br>
+						<label>Department</label><br>
+						<input type="number" name="dep_id" placeholder="1" required onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"><br>
+						<button type="button" id="sendbtnform">Send</button>
+						<button type="reset">Clear</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+	<div class="modal fade" id="mymodal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Modify product.</h4>
+				</div>
+				<div class="modal-body">
+					<form id="myformmodal">
+						<label>ID</label><br>
+						<input type="number" name="prod_id" disabled><br>
+						<label>Name</label><br>
+						<input type="text" name="name" placeholder="Name" required><br>
+						<label>Cost</label><br>
+						<input type="text" name="cost" placeholder="Cost" required onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;"><br>
+						<label>Price</label><br>
+						<input type="text" name="price" placeholder="Price" required onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;"><br>
+						<label>Description</label><br>
+						<input type="text" name="description" placeholder="Short description" value="Some data"><br>
+						<label>Department</label><br>
+						<input type="number" name="dep_id" placeholder="1" required onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"><br>
+						<button type="button" id="sendbtnformmodal">Send</button>
+						<button type="reset">Clear</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btnmodal" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

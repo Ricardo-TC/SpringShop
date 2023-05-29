@@ -1,0 +1,13 @@
+table{
+    border: solid;
+}
+th{
+    text-align: left;
+}
+
+.actionbtn{
+        background-color: transparent;
+        color: #777;
+        text-decoration: underline;
+        border: none;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<title>Products - Online Shop</title>
+</head>
+<body>
+	<header>
+		<h1>Product's List.</h1>
+	</header>
+	<button id="btn1" onclick="print()">Get Products</button>
+    <script src="index.js"></script>
+	 
+	<section>
+		<article>
+			<h2>All products in shop data base.</h2>
+		</article>
+	</section>
+	
+	<script >
+		let test = '';
+
+
+	
+		/*fetch("http://localhost:8080/Product",{
+			headers: {
+				'Access-Control-Allow-Origin':'*',
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			method: 'GET'
+		})
+		.then(response => {
+			console.log(response)
+  				if (response.ok) {
+		    		response.json().then(json => {
+      				console.log(json);
+    			});
+  			}
+		})
+		.catch((err)=>console.log('error'+err)); */
+	
+	
+		
+		async function print(){
+		
+			var productArray = 
+			await fetch("http://localhost:8080/Product", {
+	  			method: 'GET',
+	  			mode: 'cors'
+			})
+  			.then(response => response.json())
+  			/*.then(data => { productArray = data;
+				console.log(productArray);
+  			})*/
+  			.catch(error => { console.log(error)
+  			});
+
+			console.log(productArray);
+		}
+		
+
+	</script>
+
+</body>
+<footer>
+<hr>
+	<a href="https://www.google.com">Google</a>
+	<br><!-- <br> salto de linea -->	
+	<a href="mailto:richard_tc@hotmail.com">Contact</a>
+	<p>Copyright 2023
+<hr><!-- coloca una linea a travez -->
+</footer>
+</html>

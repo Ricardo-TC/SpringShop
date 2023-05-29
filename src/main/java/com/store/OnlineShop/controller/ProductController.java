@@ -2,6 +2,7 @@ package com.store.OnlineShop.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.store.OnlineShop.model.entity.Product;
 import com.store.OnlineShop.service.ProductService;
@@ -18,7 +20,7 @@ import com.store.OnlineShop.service.dto.ProductInDTO;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
-@RequestMapping("/Product")
+@RequestMapping(value = "/Product", method = RequestMethod.OPTIONS)
 public class ProductController {
 
 	private final ProductService service;
@@ -53,5 +55,12 @@ public class ProductController {
 		this.service.deleteById(id);
 	}
 	
-	
+	/*
+	@CrossOrigin(origins = "http://localhost:8080")
+	@RequestMapping(value = "/Product", method = RequestMethod.OPTIONS)
+	public HttpStatus handleOptionsRequest() {
+        // Return a successful HTTP status code (e.g., 200)
+		return HttpStatus.OK;
+    }
+	*/
 }

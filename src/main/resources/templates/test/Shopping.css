@@ -1,0 +1,98 @@
+label{
+    margin-left: 10rem;
+    margin-top: 2rem;
+    color: rgb(238, 236, 236);
+}
+
+body{
+    background-image: url(https://as2.ftcdn.net/v2/jpg/01/65/91/29/1000_F_165912971_NsQhODSscK4zDRtTvQ0q5XZd1RxWZXhn.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+caption{
+    color: rgb(255, 252, 252);
+}
+table{
+    border: solid;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+td{
+    color: rgb(8, 8, 8);
+    background-color: #eee
+}
+
+th{
+    background-color: #aaa;
+}
+
+.trigger,.reset-table{
+    float: left;
+    margin-left: 5px;  
+}
+
+.trigger,.reset-table,.searchbutton,.buy,.cancel{
+    border-radius: 4px;
+    background-color: #666;
+    color: #fff;
+}
+
+.buy,.cancel{
+    float: left;
+    margin-left: 5px;
+}
+
+aside{
+    float: right;
+    width: 400px;
+    height: max-content;
+    position: relative;
+
+    padding: 0 1rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    float: right;
+    position: relative;
+    width: 30%;
+}
+
+.summary{
+    background-color: #eee;
+    border: 1px solid #aaa;
+    padding: 1rem;
+    position: fixed;
+    width: 700px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 20px;
+    margin-top: 35px;
+}
+.summary-total-items {
+    color: #666;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+
+.sum-total {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  clear: both;
+  margin: 1rem 0;
+  overflow: hidden;
+  padding: 0.5rem 0;
+  text-align: right;
+  font-size: 3rem;
+}
+
+.BTNsummary{
+    background-color: transparent;
+    color: #777;
+    text-decoration: underline;
+    border: none;
+}

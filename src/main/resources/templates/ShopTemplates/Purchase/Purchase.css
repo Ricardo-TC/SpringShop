@@ -1,8 +1,24 @@
-table{
+.producttable{
+    border: solid;
+    border-collapse: collapse;
+    height: 600px;
+}
+.carttable{
+    border-collapse: collapse;
     border: solid;
 }
+
+.tableFixHead          { overflow: auto; height: 600px; }
+.tableFixHead thead th { position: sticky; top: 0; z-index: 1; }
+
+th, td { padding: 2px 4px; }
+
 th{
     text-align: left;
+    background:#eee; 
+}
+tr{
+    border-bottom: 1px solid #ccc;
 }
 
 .actionbtn{

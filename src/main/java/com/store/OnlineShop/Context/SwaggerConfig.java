@@ -1,10 +1,11 @@
-package com.store.OnlineShop.context;
+package com.store.OnlineShop.Context;
 
 import java.util.Collections;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import io.swagger.annotations.SwaggerDefinition;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -15,6 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
+@SwaggerDefinition(basePath = "http://localhost:8080/api")
 public class SwaggerConfig {
 	@Bean
 	public Docket api() {

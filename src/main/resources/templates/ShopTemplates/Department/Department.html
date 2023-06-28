@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Department.css">
+    <script src="Department.js"></script>
+    <title>Departments</title>
+</head>
+<body>
+    <main>
+        <div class="departments col-lg-12">
+            <div class="showdepartments col-lg-7">
+                <h1>***** Departments *****</h1>
+                <div class="alldepartments">
+                    <div>
+                        <button id="btngetall" class="getall">Get All Departments</button>
+                        <button class="refresh" onclick="location.reload()">Refresh</button>
+                    </div>
+                    <div>
+                        <table width="400px">
+                            <col style="width: 10%">
+                            <col style="width: 60%">
+                            <col style="width: 30%">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="departmenttable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="createdepartments col-lg-5">
+                <h1>***** Create new department *****</h1>
+                <div>
+                    <form id="mydeptform">
+                        <label>Name: </label>
+                        <input type="text" name="dep_name" placeholder="Name" required><br>
+                        <button type="button" id="sendbtnform">Send</button>
+                        <button type="reset">Clear</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <a href="/ShopTemplates/MainMenu/MainMenu.html">Main Menu</a>
+        <a href="/ShopTemplates/Product/Products.html">Products</a>
+        <a href="/ShopTemplates/Purchase/Purchase.html">Purchase</a>
+    </footer>
+    <div class="modal fade" id="mymodal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modify Department</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="myformmodal">
+                        <input type="text" id="modalname" name="dep_name" placeholder="name" required>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btnmodal" id="sendbtnformmodal" data-dismiss="modal">Send</button>
+                    <button type="button" class="btnmodal" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

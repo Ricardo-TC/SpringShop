@@ -18,21 +18,21 @@ public class CorsConfig implements WebMvcConfigurer {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOriginPatterns("*")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")//GET", "POST", "PUT", "DELETE"
+                        .allowedMethods("/**")//GET", "POST", "PUT", "DELETE"
                         .allowedHeaders("*")//"Content-Type"
-                        .exposedHeaders("Authorization",  "Access-Control-Allow-Origin")//"Content-Type"
+                        .exposedHeaders("*",  "Access-Control-Allow-Origin")//"Authorization","Content-Type"
                         .allowCredentials(true)
                         .maxAge(3600);
             }
         };
     }
 
-	/*@Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("*")
-                .allowedMethods("*")
-                .allowedHeaders("*")
-                .allowCredentials(true);
-    }*/
+//	@Override
+//    public void addCorsMappings(CorsRegistry registry) {
+//        registry.addMapping("/**")
+//                .allowedOrigins("*")
+//                .allowedMethods("*")
+//                .allowedHeaders("*")
+//                .allowCredentials(true);
+//    }
 }

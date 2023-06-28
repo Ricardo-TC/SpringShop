@@ -2,11 +2,14 @@ package com.store.OnlineShop.model.entity;
 
 import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
+//import org.springframework.data.relational.core.mapping.Table;
+
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "cart")
+//@Table
 public class Cart {
 	
 	@Id

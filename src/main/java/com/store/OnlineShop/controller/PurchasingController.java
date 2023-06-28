@@ -30,6 +30,11 @@ public class PurchasingController {
 		return this.purchasingService.addToCart(prod_id,quantity);
 	}
 	
+	@GetMapping("{id}")
+	public List<Cart> getCartByTicket(@PathVariable("id") int id){
+		return this.purchasingService.getCartByTicket(id);
+	}
+	
 	@PatchMapping("/FinishPurchasePrintTicket")
 	public List<Cart> finishPurchasePrintTicket() {
 		return this.purchasingService.totalPurchase();
@@ -39,5 +44,14 @@ public class PurchasingController {
 	public float onlyTotalPurchase() {
 		return this.purchasingService.onlyTotalPurchase();
 	}
-
+	
+	@DeleteMapping("/DeleteProductFromCart/{id}")
+	public void deleteProductFromCart(@PathVariable("id") int id) {
+		this.purchasingService.deleteProductFromCart(id);
+	}
+	
+	@PatchMapping("/UpdateProductFromCart")
+	public void updateProductFromCart(@RequestParam int id,@RequestParam int prod_id,@RequestParam int quantity) {
+		this.purchasingService.updateProductFromCart(id, prod_id, quantity);
+	}
 }

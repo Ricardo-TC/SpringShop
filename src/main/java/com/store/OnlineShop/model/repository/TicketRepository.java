@@ -22,7 +22,7 @@ public interface TicketRepository extends JpaRepository<Ticket,Integer>{
 	@Procedure(procedureName = "totalPurchase", outputParameterName = "total")
 	public float totalPurchase(@Param("ticket") Integer ticket);
 	
-	@Procedure(procedureName = "totalPurchase", outputParameterName = "total")
+	@Procedure(procedureName = "onlytotalPurchase", outputParameterName = "total")
 	public float onlyTotalPurchase(@Param("ticket") Integer ticket);
 
 	@Query(value = "select * from ticket where ticket_id=:id", nativeQuery = true)

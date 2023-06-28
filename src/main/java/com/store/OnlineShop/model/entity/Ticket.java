@@ -1,6 +1,7 @@
 package com.store.OnlineShop.model.entity;
 
 import java.time.LocalDate;
+//import org.springframework.data.relational.core.mapping.Table;
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -10,6 +11,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "ticket")
+//@Table
 public class Ticket {
 	
 	@Id

@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 //@SpringBootApplication(scanBasePackages="com.store.OnlineShop")
 //@ComponentScan({"com.store.OnlineShop.mapper"})
 //@EntityScan("com.store.OnlineShop.model.entity")
-//@EnableJpaRepositories("com.store.OnlineShop.model.repository")
+@EnableJpaRepositories("com.store.OnlineShop.model.repository")
 @SpringBootApplication
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@ComponentScan(basePackages = "com.store.OnlineShop")//controller", "Context"})
 public class OnlineShopApplication {
 
 	public static void main(String[] args) {

@@ -60,6 +60,10 @@ public class PurchasingService {
 		return this.cartRepository.save(cart);
 	}
 	
+	public List<Cart> getCartByTicket(int ticket_id){
+		return this.cartRepository.getCartByTicket(ticket_id);
+	}
+	
 	@Transactional
 	public List<Cart> totalPurchase() {
 		if(!validations.validateNumber(ticket))throw new ShopExceptions("It is required a new ticket",HttpStatus.BAD_REQUEST);
@@ -77,7 +81,20 @@ public class PurchasingService {
 	}
 	
 	
+	public void deleteProductFromCart(int id) {
+		if(cartRepository.findById(id).isEmpty())throw new ShopExceptions("Data not found",HttpStatus.NOT_FOUND);
+		this.cartRepository.deleteById(id);
+	}
 	
+	@Transactional
+	public void updateProductFromCart(int  id,int prod_id,int quantity) {
+		if(!validations.validateNumber(ticket))throw new ShopExceptions("Problem with ticket",HttpStatus.BAD_REQUEST);
+		if(!validations.validateNumber(prod_id))throw new ShopExceptions("Product is required",HttpStatus.NO_CONTENT);
+		if(!validations.validateNumber(id))throw new ShopExceptions("Cart ID is required",HttpStatus.NO_CONTENT);
+		if(!validations.validateNumber(quantity))throw new ShopExceptions("Quantity is required",HttpStatus.NO_CONTENT);
+		float subtotal = getSubtotal(prod_id,quantity);
+		this.cartRepository.updateProductFromCart(quantity, id, ticket, subtotal);
+	}
 	
 	
 	private float getSubtotal(int prod_id,int quantity) {

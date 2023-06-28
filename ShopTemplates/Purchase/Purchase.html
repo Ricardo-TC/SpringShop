@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Purchase</title>
+    <link rel="stylesheet" href="Purchase.css">
+	<script src="Purchase.js"></script>
+</head>
+<body>
+    <main>
+        <h1>Purchase section</h1>
+        <div class="col-lg-12">
+            <div>
+                <label>Generate new Purchase: </label>
+                <button id="ticketbtn">Ticket</button>
+                <input id="ticketinput" value="0" size="5px" disabled><br>
+                <label for="searchinput">Enter product ID: </label>
+                <input id="searchinput" size="6px" type="text" placeholder="5" max="999" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" autofocus>
+                <button id="searchbutton" disabled>Search</button>
+                <script>
+                    var input = document.getElementById("searchinput");
+                    input.addEventListener("keypress", function(event){
+                    if(event.key === "Enter"){
+                        event.preventDefault();
+                        document.getElementById("searchbutton").click();
+                    }
+                    });
+                </script>
+                <label>Look for products without buying: </label>
+                <button id="consultbtn">Consult</button>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="col-lg-6">
+                <table class="producttable" width="900px">
+                    <col style="width: 10%">
+                    <col style="width: 50%">
+                    <col style="width: 20%">
+                    <col style="width: 20%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="producttable"></tbody>
+                </table>
+            </div>
+            <div class="col-lg-6">
+                <div>
+                    <h2>Products on cart.</h2>
+                    <h4>Ticket number: <b>#<span id="ticketspan"></span></b> Date: <b><span id="datespan"></span></b></h4>
+                    <div class="tableFixHead">
+                        <table class="carttable" width="800px">
+                            <col style="width: 35%">
+                            <col style="width: 10%">
+                            <col style="width: 10%">
+                            <col style="width: 10%">
+                            <col style="width: 35%">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Subtotal</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="carttable"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div>
+                    <h4>Total: <b>$<span id="totalspan"></b></span></h4>
+                </div>
+                <button type="button" id="finishbtn" disabled>Finish</button>
+                <button type="button" id="cancelbtn" disabled>Cancel</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <a href="/ShopTemplates/MainMenu/MainMenu.html">Main Menu</a>
+        <a href="/ShopTemplates/Department/Department.html">Department</a>
+        <a href="/ShopTemplates/Product/Products.html">Products</a>
+    </footer>
+    <div class="modal fade" id="cartmodal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add product to Cart.</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="cartmodalform">
+                        <label>Product: <span id="spanprodmodal"></span></label><br>
+                        <input id="inputcartmodalproduct" type="text" name="prod_id" size="5px" type="text" disabled><br>
+                        <label>Quantity</label><br>
+                        <input id="inputcartmodalquantity" type="text" name="quantity" size="5px" type="text" max="999" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" required>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="sendbtncartmodal" data-dismiss="modal">Send</button>
+                    <button type="button" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

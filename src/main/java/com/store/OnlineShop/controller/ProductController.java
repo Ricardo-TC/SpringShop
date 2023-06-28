@@ -20,7 +20,7 @@ import com.store.OnlineShop.service.dto.ProductInDTO;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
-@RequestMapping(value = "/Product", method = RequestMethod.OPTIONS)
+@RequestMapping(value = "/Product", method = RequestMethod.POST)
 public class ProductController {
 
 	private final ProductService service;

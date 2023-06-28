@@ -1,6 +1,7 @@
 package com.store.OnlineShop.model.entity;
 
 import java.time.LocalDate;
+//import org.springframework.data.relational.core.mapping.Table;
 
 import javax.persistence.*;
 
@@ -11,6 +12,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "discount")
+//@Table
 public class Discount {
 	
 	@Id

@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.store.OnlineShop.exceptions.ShopExceptions;
@@ -18,18 +19,20 @@ import com.store.OnlineShop.util.Validations;
 
 @Service
 public class DepartmentService {
-	private final DepartmentDTOMapper mapper;
-	private final DepartmentRepository repository;
-	private final Validations validations = new Validations();
+	private DepartmentDTOMapper mapper;
+	private DepartmentRepository repository;
+	private Validations validations = new Validations();
+	
 	public DepartmentService(DepartmentDTOMapper mapper, DepartmentRepository repository) {
 		super();
 		this.mapper = mapper;
 		this.repository = repository;
 	}
 	
-	//@Autowired
-	public Department createDepartment(DepartmentInDTO departmentInDTO) {
-		validations.validateDepartment(departmentInDTO);
+	public Department createDepartment(String dep_name) {
+//		validations.validateDepartment(departmentInDTO);
+		DepartmentInDTO departmentInDTO = new DepartmentInDTO();
+		departmentInDTO.setDep_name(dep_name);
 		Department department = mapper.map(departmentInDTO);
 		return this.repository.save(department);
 	}

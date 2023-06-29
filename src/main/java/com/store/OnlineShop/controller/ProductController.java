@@ -20,7 +20,7 @@ import com.store.OnlineShop.service.dto.ProductInDTO;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
-@RequestMapping(value = "/Product", method = RequestMethod.POST)
+@RequestMapping("/Product")
 public class ProductController {
 
 	private final ProductService service;
@@ -30,7 +30,7 @@ public class ProductController {
 		this.service = service;
 	}
 	
-	@PostMapping
+	@PostMapping(path = "/createProduct", produces = "application/json", consumes = "application/json")
 	public Product createProduct(@RequestBody ProductInDTO productInDTO) {
 		return this.service.createProduct(productInDTO);
 	}

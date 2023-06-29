@@ -20,7 +20,7 @@ public class DiscountController {
 		this.service = service;
 	}
 
-	@PostMapping
+	@PostMapping(produces = "application/json", consumes = "application/json")
 	public Discount setNewDiscount(@RequestBody DiscountInDTO discountInDTO) {
 		return this.service.setNewDiscount(discountInDTO);
 	}

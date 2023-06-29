@@ -300,7 +300,7 @@ function createProduct(){
     var form1 = document.getElementById("myform");
     var formData1 = new FormData(form1);
     var xhr1 = new XMLHttpRequest();
-    xhr1.open("POST",url+"/Product",true);
+    xhr1.open("POST",url+"/Product/createProduct",true);
     xhr1.setRequestHeader("Content-Type","application/json");
     xhr1.onload = function(){
         if(xhr1.status === 200){
